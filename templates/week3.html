@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Week 3 - Cascading Style Sheets </title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+    <style>
+    /* Here, we make the font size of p tags 18px */
+      p {
+        font-size: 18px;
+        font-family: "Arial";
+      }
+      /* To denote that the selector is a class, we add a period to the fron */
+      .odd {
+        color: pink;
+      }
+      .even {
+        color: purple;
+      }
+      /* To denote that the selector is an id, we add a octotrope to the front */
+      #veryodd {
+        color: green;
+      }
+      .myStuff #first {
+        color: orange;
+      }
+      /* To center an element in its parent, we use margin-left: auto
+         and margin-right: auto; This makes the browser automatically set
+         both, and so they become even. */
+      body {
+        width: 700px;
+        text-align: justify;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      h1, h2  {
+        text-decoration: underline;
+      }
+      img {
+        display: block;
+        width: auto;
+      }
+      #flag div {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+      .nav ul {
+        /* remove the bullet in from of the list */
+        list-style-type: none;
+      }
+      .nav ul li {
+        display: inline;
+      }
+      .nav2 ul {
+        /* remove the bullet in from of the list */
+        list-style-type: none;
+      }
+      .nav2 ul li {
+        display: inline;
+        padding: 5px;
+        margin: 2px;
+        background-color: lightblue;
+
+      }
+      /* This is the psuedo class for our nav bar items */
+      .nav2 ul li:hover {
+
+        background-color: blue;
+      }
+      /* The psuedo class for visited and unvisited links*/
+      .nav2 ul li a:visited, .nav2 ul li a:link {
+        text-decoration: none;
+        color: red;
+      }
+
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('intro') }}">Introduction</a></li>
+        <li><a href="{{ url_for('week1') }}">Week 1</a></li>
+        <li><a href="{{ url_for('week2') }}">Week 2</a></li>
+        <li><a href="{{ url_for('week3') }}">Week 3</a></li>
+        <li><a href="{{ url_for('week4') }}">Week 4</a></li>
+        <li><a href="{{ url_for('week5') }}">Week 5</a></li>
+        <li><a href="{{ url_for('week6') }}">Week 6</a></li>
+        <li><a href="{{ url_for('week7') }}">Week 7</a></li>
+      </ul>
+    </nav>
+    <h1> Pretty Pretty, Shiny Shiny </h1>
+    <p>
+      So far, our webpages have been very plain and boring. Or, in the case of
+      the Superman example, just plain ugly. The way web developers make better
+      web pages is by using Cascading Style Sheets (CSS). CSS gives us many
+      advantages over only using HTML. Today, we will use CSS to beautify our
+      website.
+    </p>
+    <hr />
+    <h2> Advantages of CSS </h2>
+    <p>
+       We mentioned that CSS is like the butter to HTML&#39;s toast, but why is
+       that?
+    </p>
+    <ul>
+      <li>
+        <p>
+          <strong>Editing Power: </strong> CSS gives one the power to edit every
+          attribute on their web page in so many ways, there is no need to learn
+          them all. Many ways you could want to change a page can be done using a
+          few lines of CSS.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Maintenance: </strong> Changes can resonate throughout your
+          entire website, including on different pages, by only changing one file. If you want all the paragraphs
+          on your website to change from black to blue, this can be achieved
+          relatively easily using external style sheets.
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>The W3C Group says so: </strong> The W3C maintains CSS and
+          recommends how it should change. Many HTML tags that were used to modify
+          web pages have been deprecated, or considered obselete.
+        </p>
+
+
+      </li>
+
+    </ul>
+    <h2> The Basics </h2>
+    <p>
+       Let us start with the basics. A lot of CSS does exactly what it says it
+       will. To understand what is happening, simply use your old friend Inspect
+       Element!
+    </p>
+    <h2> Adding Color </h2>
+    <h3> Background Color </h3>
+      <p style="background-color: yellow">
+        By setting the background color to &quot;yellow,&quot; we change
+        the area behind this text. We can also change the attribute several other
+        ways, with the most popular being hex. The hex representation of yellow
+        in hex is #FFFF00. Hex gives of the ability to change to colors that
+        might not have names.
+      </p>
+      <p style="background-color: #FFFF00">
+        See? It worked here, too. Hex code is very hard to understand as a human,
+        or at least at first. It&#39;s like reading a paper in binary, a big inconvenience. We
+        will now learn the basics about it. Every two numbers
+        denotes how much red, green, and blue is in the whole color. The first two
+        are for the amount of red, the next for green, and the last ones are for
+        blue. The max value for a color is FF (255) and the min value is 00 (obviously
+        0). From there, you can mix colors like you used to in elementary school,
+        with different amount of each color. Or, you could search hex values of
+        different colors and see which one works the best.
+      </p>
+    <h3> Color </h3>
+    <p style="color: blue">
+      We can also change the color of text! But we should also remember that
+      changing background and foreground colors effect readability.
+    </p>
+    <p style="background-color: red; color: red">
+      This is a worse case scenario, but I think you get the point.
+    </p>
+    <h2> Font </h2>
+    <h3> Font Size </h3>
+    <p>
+      There are several ways to change the font size of text.
+    </p>
+    <p style="font-size: 30px">
+      There are several ways to change the font size of text.
+    </p>
+    <p style="font-size: 200%">
+      There are several ways to change the font size of text.
+    </p>
+    <p style="font-size: xx-small">
+      There are several ways to change the font size of text.
+    </p>
+    <p style="font-size: 1cm">
+      There are several ways to change the font size of text.
+    </p>
+    <p>
+       I think you get the point. Using px gives us the ability to change the max
+       height of our text in pixels. The percent signs gives us the ability to
+       set the size of our text relative to its normal size (100%) is the default
+       size. Using &#39;cm&#39; at the end of a number allows us to set the size
+       of our text in centimeter. And lastly, using &#39;xx-small&#39; allows us
+       to specify the size relative to the default size as well. It has less freedom
+       over size than percentage, but there are other properties as well, like
+       &#39;x-large&#39; that give a wider range of change. Also, you may notice
+       that although we specified that all paragraphs should be 18px font, it is now
+       changed. Like other programming languages, local scope can redefine higher
+       levels.
+    </p>
+    <h3> Font Family</h3>
+    <p>
+      We may also want to change which font family we are displaying. The reasons
+      for doing so can range from simply a prettier font style to readibility.
+      Typically sans-serif fonts are eaier to read on screens, but are not regarded
+      to be as fancy. A serif font has letters that have accents on the tips.
+    </p>
+    <p style="font-family: Times New Roman; font-size: 200%">
+      Times New Roman is a serif font.
+    </p>
+    <p style="font-family: Arial; font-size: 200%">
+      Arial is a sans-serif font.
+    </p>
+    <p style="font-family: Comic Sans MS; font-size: 200%">
+      Most fonts can be made using CSS.
+    </p>
+    <p style="font-family: cursive; font-size: 200%">
+      Even some that are a little fancier than others.
+    </p>
+    <p>
+      Make sure to choose the right font for  the right job. If you want
+      legibility, perhaps a sans-serif font would be best. If you are using Comic
+      Sans, you better be writing a comic. Other types of fonts that you may
+      consider are monospaced fonts. Monospaced fonts contain charaters that
+      are all of the same width. You may realize that most programming environments
+      use monspaced fonts so that code can easily be scanned and blocks of similar
+      code is alligned.
+    </p>
+    <h3> Emphasis </h3>
+    <p>
+      Sometimes you just want to draw attention to different parts of text. This
+      can be done using both CSS or HTML tags, depending on how you what you want
+      to format. If you want to highlight a phrase in a block of text, HTML is the
+      best option to <em>emphasize</em>, <strong>bold</strong> or <u>underline</u>
+      your text.
+    </p>
+    <h3> Alignment </h3>
+    <p>
+      Just like in a word editor, there are different ways to display our text,
+      like &#39;center,&#39; &#39;justify,&#39; &#39;left,&#39; and &#39;right.&#39;
+      It is left aligned by default on most browsers.
+    </p>
+    <p>
+      I am left aligned.
+    </p>
+    <p style="text-align: center">
+      I am centered.
+    </p>
+    <p style="text-align: right">
+      I am right aligned.
+    </p>
+    <p>
+      And of last but not least, this entire page is justified. Sometimes it looks more orderly
+      this way.
+    </p>
+    <h2> Selectors </h2>
+    <p>
+       A selector is a HTML tag that CSS will modify. For external and embedded
+       style sheets, the form to modify a selector is:
+       <p>
+         selector { <br />
+           &nbsp;&nbsp;attribute: value; <br />
+         }
+       </p>
+    </p>
+    <p>
+      We can make every instance of an HTML tag the selector by simply puting
+      placing it in the specified selector place. In our embeeded style sheet,
+      we specified that all p tags would have 18px font using this format. But
+      what if we want different types of p tags to behave differently and do not
+      want to change every instance, we can either use ID&#39;s or Classes. The
+      difference between these two is that ID&#39; are unique, ie. you can only
+      have one per page. Classes are not. Technically, you can have
+    </p>
+    <p class="odd">
+      This is an odd tag.
+    </p>
+    <p class="even">
+      This is an even tag.
+    </p>
+    <p class="odd">
+      This is an odd tag.
+    </p>
+    <p class="even">
+      This is an even tag.
+    </p>
+    <p id="veryodd">
+      This is a very odd tag.
+    </p>
+    <p class="even">
+      This is an even tag.
+    </p>
+    <p>
+      We can also also access different elements within div tags for when we do not
+      want to modify every element within. To do this, add the desired element
+      to
+    </p>
+    <div class="myStuff">
+      <p id="first">
+        I want to be different.
+      </p>
+      <p>
+        I do not.
+      </p>
+
+    </div>
+    <p>
+       Classes will be important for next week!
+    </p>
+    <h2> Dimensions </h2>
+    <p>
+       Sometimes we don&#39;t want our webpage to go all the way across the screen
+       or we want a certain element to be bigger than the default setting. We
+       saw how to change the size of text earlier, but other elements are a tab
+       bit different.
+    </p>
+    <h3> Size </h3>
+    <p>
+      A very basic way to change the dimensions of an object are to just change
+      its height and width attributes.
+    </p>
+    <div id="square" style="width: 100px; height: 100px; background-color: red">
+    </div>
+    <img src="{{ url_for('static', filename='smile.png') }}" alt="Picture of odd looking smiley face"
+    style="width: 300px; height: 300px"/>
+    <h3> Alignment </h3>
+    <p>
+      To center an element within its parent, or the container that it is in, we
+      set the margin-left and margin-right attributes to auto. For images, we
+      must first make their display value block. This allows us to treat them
+      like any other block (live a div).
+    </p>
+    <img src="{{ url_for('static', filename='smile.png') }}" style="margin-right: auto; "/>
+    <img src="{{ url_for('static', filename='smile.png') }}" style="margin-left: auto; margin-right: auto;"/>
+    <img src="{{ url_for('static', filename='smile.png') }}" style="margin-left: auto; "/>
+    <h3>Padding and Margins</h3>
+    <p>
+      Margins are the empty space that surrounds an object. Padding is also space
+      around an element, but this space is part of the element. Below, we have two
+      images that are currently touching. To space them out, we simply modify the
+      margins of each. We could modify margin-bottom of the one on top, or
+      margin-top of the one on the bottom.
+    </p>
+    <img src="{{ url_for('static', filename='smile.png') }}"  />
+    <img src="{{ url_for('static', filename='smile.png') }}"  />
+    <p>
+      BEHOLD THE MAGIC OF CSS!
+    </p>
+    <img src="{{ url_for('static', filename='smile.png') }}"  style="margin-bottom: 25px"/>
+    <img src="{{ url_for('static', filename='smile.png') }}"  />
+    <h3> Display </h3>
+    <p>
+      We used the display attribute to align images above, but it can also be used
+      to display elements inline. So far, all of our elements have been right after
+      one aother. Let&#39;s make the flag of Guinea using this attribute.
+    </p>
+    <div id="flag">
+      <!-- It's funny, we comment this out so that there is no whitespace between
+      our divs. -->
+      <div style="background-color: red; height: 200px; width: 100px"></div><!--
+      --><div style="background-color: yellow; height: 200px; width: 100px"></div><!--
+      --><div style="background-color: green; height: 200px; width: 100px"></div>
+    </div>
+    <p>
+      One one to make a navigation bar is to use make an inline list of hyperlinks.
+    </p>
+    <div class="nav">
+      <ul>
+        <li>
+          <a href="#">Link 1</a>
+        </li>
+        <li>
+          <a href="#"> Link 2</a>
+        </li>
+        <li>
+          <a href="#"> Link 3</a>
+        </li>
+      </ul>
+    </div>
+    <p>
+      We will make our nav bar better in the next section.
+    </p>
+    <h2> Psuedo Classes </h2>
+    <p>
+      Psuedo classes are pretty darn cool. They allow us to add some interactivity
+      to our webpage relatively easily.
+    </p>
+    <h3> Hover </h3>
+    <p>
+      The hover psuedo class lets us define what actions we want to happen when
+      the cursor is above a certain element. Let us see an example using a new
+      nav bar.
+    </p>
+    <div class="nav2">
+      <ul>
+        <li>
+          <a href="#">Link 1</a>
+        </li>
+        <li>
+          <a href="#"> Link 2</a>
+        </li>
+        <li>
+          <a href="#"> Link 3</a>
+        </li>
+      </ul>
+    </div>
+    <p>
+      Now, when we hover over our nav bar, the tiles get darker color. And our links
+      stay the same color.
+    </p>
+    <h2> Homework </h2>
+    <p>
+       We have learned a lot today, but there is so much more to CSS. For each
+       section discussed, find one more example that can be done. Then, apply
+       CSS to the page you made last week.
+    </p>
+    <div style="height: 200px"></div>
+    <div style="padding-bottom: 100px" id="next">
+      <a style="float: left" href="{{ url_for('week2') }}">Previous</a>
+      <a style="float: right" href="{{ url_for('week4') }}">Next</a>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+{% extends "layout.html" %} {% block title %} Home {% endblock %}
+{% block body %}
+<table class="table" style="font-size: large">
+  <thead>
+    <th>Week</th>
+    <th>Title</th>
+    <th>Description</th>
+  </thead>
+  <tbody>
+    <h1> Introduction to Web Development </h1>
+    <p>
+      Welcome! This is a ____ week course where you will learn the basics of web
+      development. This includes HTML, CSS, JavaScript, Amazon Web Services,
+      and other libraries. You can take this course at your own pace, the weeks
+      should not hinder you.
+    </p>
+    <tr>
+      <td><a href="{{ url_for('intro')}}">Week 0</a></td>
+      <td>Introduction</td>
+      <td>
+        <p>
+          Learn how to modify a preexisting website using inspect element.
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td><a href="{{ url_for('week1')}}">Week 1</a></td>
+      <td>Building the 90s</td>
+      <td>
+        <p>
+          Learn the basics of HTML.
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td><a href="{{ url_for('week2')}}">Week 2</a></td>
+      <td>Showing Off</td>
+      <td>
+        <p>
+          Learn about Amazon Web Services, specifically Elastic Beanstalk, and deploy
+          a Flask application online.
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td><a href="{{ url_for('week3')}}">Week 3</a></td>
+      <td>Pretty Pretty, Shiny Shiny </td>
+      <td>
+        <p>
+          Learn CSS so that you can make a prettier website.
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td><a href="{{ url_for('week4')}}">Week 4</a></td>
+      <td>Picking Yourself Up by Your Bootstraps</td>
+      <td>
+        <p>
+          Learn Bootstraps so that beautifying your website is easier.
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td><a href="{{ url_for('week5')}}">Week 5</a></td>
+      <td>Bottom of the Flask</td>
+      <td>
+        <p>
+          Learn the basics of Flask so that you may create interactive websites.
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td><a href="{{ url_for('week6')}}">Week 6</a></td>
+      <td>What is a Template?</td>
+      <td>
+        <p>
+          Learn even more about Flask, specifically Jinga templates.
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td><a href="{{ url_for('week7')}}">Week 7</a></td>
+      <td>Form-ulate a Plan</td>
+      <td>
+        <p>
+          Learn about forms and APIs.
+        </p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+{% endblock %}

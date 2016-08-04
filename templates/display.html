@@ -1,0 +1,28 @@
+{% extends "layout.html" %} {% block title %} Got that Weather {% endblock
+%} {% block body %} {% for day in weather %}
+<h1>Day {{ loop.index }}</h1>
+<h3>High: </h3>
+<p>
+  {{ day['temp']['max'] }}
+</p>
+<h3>Low: </h3>
+<p>
+  {{ day['temp']['min'] }}
+</p>
+<h3> Humidity </h3>
+<p>
+  {{ day['humidity'] }}%
+</p>
+<h3> Wind Speed </h3>
+<p>
+  {{ day['speed'] }}
+</p>
+<h3> Wind Direction </h3>
+<p>
+  {{ day['deg'] }}&deg;
+</p>
+<h3> Weather </h3>
+<p>
+  {{ day['weather'][0]['main'] }}
+</p>
+{% endfor %} {% endblock %}

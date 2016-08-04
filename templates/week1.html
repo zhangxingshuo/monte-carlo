@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Week 1 - An intro to HTML</title>
+  <style>
+    /* This is some CSS, and it gives us a basic border for our table. It is
+       applied to everything in the table. */
+    table, tr, th, td {
+      border: 1px solid black; border-collapse: collapse;
+    }
+    /* We can refence the entire body too */
+    table, tr, th, td {
+        border: 1px solid black; border-collapse: collapse;
+      }
+      /* A period means we are referencing a class. This means the effect
+         will apply to everyting in the class. Also, the order that we apply
+         CSS is important, as things declared later will overwrite anything
+         that was declared before. Seperating with a comma means
+         the CSS will apply to multiply elements.*/
+  </style>
+</head>
+
+<body>
+  <!-- Now bear with us, we ar elearning web development together. Each lesson
+       will look better and incorporate more things. But for now, we will keep
+       it simple. This is a internal style, so it only applies to this page.
+       This is seen as bad practice, for several reasons, but for now, this is
+       the only way we know how to do it -->
+
+  <nav>
+    <ul>
+      <li><a href="{{ url_for('home') }}">Home</a></li>
+      <li><a href="{{ url_for('intro') }}">Introduction</a></li>
+      <li><a href="{{ url_for('week1') }}">Week 1</a></li>
+      <li><a href="{{ url_for('week2') }}">Week 2</a></li>
+      <li><a href="{{ url_for('week3') }}">Week 3</a></li>
+      <li><a href="{{ url_for('week4') }}">Week 4</a></li>
+      <li><a href="{{ url_for('week5') }}">Week 5</a></li>
+      <li><a href="{{ url_for('week6') }}">Week 6</a></li>
+      <li><a href="{{ url_for('week7') }}">Week 7</a></li>
+    </ul>
+  </nav>
+  <!-- h1 is the biggest heading, and they get small as the number increases.
+       Technically, you could make every heading h1 and just change the size
+       using CSS, but that is bad style. -->
+  <h1>Building the 90s</h1>
+  <!-- See that &#39;? That indicates a special character. It allows you to put
+       various characters in your webpage that would otherwise be impossible.
+       You can find more using your favorite search engine. -->
+  <p> So I don&#39;t know if you have heard of this cool thing called the internet
+    but its kinda a big deal. In the last module of this skunkworks class, you
+    viewed some HTML/CSS/JavaScript on the websites you found. You played
+    around with messing with websites, maybe you made some wacky text or you
+    did input some weird images. This is Harvey Mudd so you probably did way
+    more work than you should have. Have you ever tried exercising its great.
+    Also climbing that&#39;s pretty cool.
+  </p>
+  <p> So now we're going to be Tim Berners Lee the man himself the head honcho
+    the dude who was lonely in a basement in the CERN (shout out to my higgs
+    boson) and decided he wanted to talk to people from his computer thingy.
+  </p>
+
+  <!-- The a tag is an example of a hyperlink. It is a link to a website. The
+       string in the href indicates the page it links to, and the text between
+       the tags is what will be displayed on the webpage. It is (for now)
+       different from the rest of the webpage as it is underlined and is a
+       different color. -->
+  <p> Now the early forms of the internet are really cool and I recommend you
+    read this page on the
+    <a href="https://www.w3.org/People/Raggett/book4/ch02.html">
+      history of the internet.
+    </a>
+      But if you don't have time for that know that most of what I'm saying is
+      factually iffy.
+  </p>
+  <!-- THis indicates that we are changing pace, and is a horizontal line in
+       some browsers. It's not really import to use. -->
+  <hr/>
+  <!-- Notice, since we are now using a subheading, we decrease our heading tag
+       size. h1 should be reserved for only the main heading of the page. -->
+  <h2> Let&#39;s Start with the Basics: </h2>
+  <!-- index.html is a naming convention for websites. It usually is your main
+       page, and is what is summoned when your website is brought up. -->
+  <p> Open your favorite text editor (hopefully Atom), and create a file with a .html
+      file extension. I'd suggest index.html, but only extension is important.
+      It allows for your editor to use syntax highlighting (so everything
+      isn&#39;t black and white) and for your computer to open it using a web browser.
+  </p>
+  <p> There are two major portions of a html file: the head, and the body. The
+    head is just meta data about your website. This includes the title of your
+    page, and external scripts and stylesheets. Additionally, you should always,
+    always add &lt;!DOCTYPE html&gt; to the top of your file, before anything else.
+    This is a declaration of what version of HTML the file was written in. In
+    HTML5, the current version of HTML, this is the only one.
+  </p>
+  <!-- We use the symbols so the browser doesn't mistake them as tags -->
+  <p> HTML revolves around tags, denoted by &lt;&gt;. You have alreay inspected
+      plenty of tags at this points, and it is easy to see this. Even this text
+      is encapsulated in a tag. There are many, many, tags, but most of the
+      basics can be accomplished using the follwing.
+  </p>
+  <!-- This is a table tag, it holds organized data. Pretty straightforward,
+       considering this is the same exact name for it in English. th is a
+       table heading, so place it at the top of the table. td is what populates
+       the rest of the table. Notice that the table heading calls them HTML
+       elements as several of the listed items are not tags (DOCTYPE and
+       comments).-->
+  <table>
+    <tr>
+      <th>HTML Element</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>&lt;!DOCTYPE&gt;</td>
+      <td>Defines the version of HTML used. No need for a closing tag.</td>
+
+    </tr>
+    <tr>
+      <td>&lt;html&gt;</td>
+      <td>Defines an HTML document.</td>
+    </tr>
+    <tr>
+      <td>&lt;title&gt;</td>
+      <td>The title of the current page, declared in the head. Displayed on the top of the tab.</td>
+    </tr>
+    <tr>
+      <td>&lt;body&gt;</td>
+      <td>What is displayed by the ebpage. Text, images, etc.</td>
+    </tr>
+    <tr>
+      <td>&lt;h#&gt;</td>
+      <td>A heading, the bigger the #, the smaller the heading</td>
+    </tr>
+    <tr>
+      <td>&lt;p&gt;</td>
+      <td>Basic text. It does not have to be four sentences of more.</td>
+    </tr>
+    <tr>
+      <td>&lt;table&gt;,
+          &lt;th&gt;,
+          &lt;tr&gt;,
+          &lt;td&gt;
+        </td>
+      <td>
+        Different parts of a table, representing the table itself, the
+        table header, table row, and table data, respectively. Use this table
+        as an example of how to use them together.
+      </td>
+    </tr>
+    <tr>
+      <td>&lt;a href="#"&gt;</td>
+      <td>A hyperlink to another webpage. Use pound to make a "dead link."</td>
+    </tr>
+    <tr>
+      <td>&lt;img src=""&gt;</td>
+      <td>Indicates a picture, with the src being the location of the picture.</td>
+    </tr>
+    <tr>
+      <td>&lt;ul&gt;</td>
+      <td>An unordered list. Use with &lt;li&gt; to make a bulleted list.</td>
+    </tr>
+    <tr>
+      <td>&lt;ol&gt;</td>
+      <td>An ordered list. Use with &lt;li&gt; to make a numbered list.</td>
+    </tr>
+    <tr>
+      <td>&lt;li&gt;</td>
+      <td>An element in a list.</td>
+    </tr>
+    <tr>
+      <td>&lt;div&gt;</td>
+      <td>Defines a container. It implies all other HTML elements in this
+          container are related.
+      </td>
+    </tr>
+    <tr>
+      <td>&lt;span&gt;</td>
+      <td>
+        Denotes that this text should be inline with surrounding elements. It allows
+        you to style certain things differently.
+      </td>
+    </tr>
+    <tr>
+      <td>&lt;nav&gt;</td>
+      <td>
+        Indicates a list of links. This is an accessibilty option.
+      </td>
+    </tr>
+    <tr>
+      <td>&lt;pre&gt;</td>
+      <td>
+        Means that the following text is already preformatted, thus any whitespace
+        is conserved. This is mostly for placing code sampkes into HTNL.
+      </td>
+    </tr>
+  </table>
+  <hr />
+  <h2>Experimentation</h2>
+  <p>
+     As you may know, college is a place of experimentation. And that's what we
+     shall do. Let us make a site on that includes most of the elements in the
+     above table.
+  </p>
+
+  <div class="intro">
+    <h1>My Bio</h1>
+    <!-- This is inline CSS. It allows you to modify an element while still in
+         the body. Be careful, as it can look clunky if too many rules are
+         added. -->
+    <img src="{{ url_for('static', filename='superman.jpeg')}}" style="width: 200px; height: 300px;"/>
+    <p>
+      Hello, my name is Clark. I was born on Krypton, but was sent here by my
+      parents when my planet was destroyed. Once, I go here, I obtained super human
+      powers and took on the mantel of Superman. Today, I protect the city of
+      Metropolis from evil (when I'm not destroying it myself).
+    </p>
+  </div>
+
+  <hr />
+  <div class="bio">
+  <h2> Quick Facts</h2>
+
+    <ul>
+      <li>
+        Name: Clark Kent
+      </li>
+      <li>
+        Nirth Planet: Kryptonite
+      </li>
+      <li>
+        Super Powers: Basically Everything
+      </li>
+      <li>
+        Weaknesses: Kryptonite, Lois Lane, Martha
+      </li>
+    </ul>
+  </div>
+  <hr />
+  <div class="baddies">
+    <h2>Top Villians</h2>
+    <table>
+      <tr>
+        <th>
+          Name
+        </th>
+        <th>
+          Abilities/Powers
+        </th>
+      </tr>
+      <tr>
+        <td>
+          Lex Luthor
+        </td>
+        <td>
+          Intelligence, Money
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Doomsday
+        </td>
+        <td>
+          Invulnerability, Super strength
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Bruce Wayne
+        </td>
+        <td>
+          ???
+        </td>
+      </tr>
+    </table>
+  </div>
+  <hr />
+  <div class = "films">
+    <h2> Favorite Movies</h2>
+    <p>
+       I love to watch movies!
+    </p>
+    <ol>
+      <li>
+        <a href="http://www.imdb.com/title/tt3498820/">
+          Captain America: Civil War
+        </a>
+      </li>
+      <li>
+        <a href="http://www.imdb.com/title/tt2395427/">
+          Avengers: Age of Ultron
+        </a>
+      </li>
+      <li>
+        <a href="http://www.imdb.com/title/tt0848228/">
+          The Avengers
+        </a>
+      </li>
+    </ol>
+  </div>
+  <div class="code">
+    <p>
+      I have been taking CS classes at Harvey Mudd. Here is my favorite program.
+    </p>
+  <pre>
+    <!-- We use span so our print is still with everything else -->
+<span style="color: purple">print</span>("Clark Kent is not Superman")
+
+
+  </pre>
+  </div>
+
+   <p>
+     Pretty bad, right? Well that is because our CSS skills have not fully
+     developed yet. There is some very basic CSS on these pages, but we will
+     learn more later on. Just wait a little bit longer.
+   <hr />
+   <h2> Homework </h2>
+   <p>
+      Now it&#39;s your turn! Make your own website, about you or something
+      that you love, using all but three of the tags given. It can be any three,
+      and props if you use them all. You will be building on this for weeks to come,
+      so make it great!
+   </p>
+   <div style="padding-bottom: 100px" id="next">
+     <a style="float: left" href="{{ url_for('intro') }}">Previous</a>
+     <a style="float: right" href="{{ url_for('week2') }}">Next</a>
+   </div>
+
+</body>
+
+</html>

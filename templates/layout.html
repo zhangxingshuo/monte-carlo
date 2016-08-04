@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <meta charset="utf-8">
+  <!-- The next few lines are so that Bootstraps and JQuery are loaded.
+       You should include all three if you want to use Bootstraps. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.4.0/styles/default.min.css">
+  <script src="//cdn.jsdelivr.net/highlight.js/9.4.0/highlight.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='common.css') }}">
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  </head>
+<body>
+  <!-- A default Bootstrap nav bar -->
+  <nav class="navbar navbar-default">
+    <!-- Makes nav bar go the full length of the screen -->
+    <div class="container-fluid">
+      <!-- A heading element. You can make it an icon if you like. -->
+      <div class="navbar-header">
+        <!-- This is for mobile displays. It will make it so that a little box
+             with 3 horizontal bars show show up when the web screen is small enough.
+             Try it for yourself, just make the webpage smaller until it appears.
+             The data-toggle will determine what interaction happens an element
+             here, the rest of the nav bar is being collapsed until it is clicked.
+             The data-target attribute is.-->
+        <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-nav">
+          <!-- This is for screen readers only, it allows for screen readers to
+          know what we are doing here. It technically would not effect how your
+          code runs on your web browser, but we want our webpage to be accessible
+          to everyone, so include it. -->
+          <span class="sr-only">Toggle Navigation</span>
+          <!-- These are the bars of the button. Add more lines like this to
+               make more bars. -->
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <!-- The header that will appear. It can be also be a glyphicon. Uncomment
+             the glyphicon option to see it -->
+        <a class="navbar-brand active" href="{{ url_for('home')}}">Home</a>
+
+        <!-- A glyphicon is a vector image of different things. You can use them
+             as icons. There are a lot, and they can all be found on the Bootstraps
+             Component page at http://getbootstrap.com/components/ -->
+
+        <!--<a class="navbar-brand active" href="{{ url_for('home')}}">
+          <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+        </a>-->
+      </div>
+      <!-- We specify that this is the part we want to collapse by giving it the
+           id from above -->
+      <div class="collapse navbar-collapse" id="collapse-nav">
+        <!-- All the items in our nav are just elements in an unorder list with
+             a wrapper around them. We simply specify that this is what we what
+             with this list. -->
+        <ul class="nav navbar-nav">
+          <!-- This will make the list element a dropdown menu. -->
+          <li class="dropdown">
+            <!-- We want our list to dropdown when selected, so that is why are
+                 data toggle is set to dropdown when selected. The last three
+                 attributes are for assessibility. They allow screen readers to
+                 know that this list element has a popup, it is not initially expanded
+                 and that it is acting as a button. We specify this for any element
+                 acts like a button that isn't actually a button -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role=button>
+              <!-- We give a caret icon at the end so the user knows that this is
+              a drop down menu -->
+              Weeks <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="{{ url_for('intro')}}">Introduction</a>
+              </li>
+              <li>
+                <a href="{{ url_for('week1')}}">Week 1</a>
+              </li>
+              <li>
+                <a href="{{ url_for('week2')}}">Week 2</a>
+              </li>
+              <li>
+                <a href="{{ url_for('week3')}}">Week 3</a>
+              </li>
+              <li>
+                <a href="{{ url_for('week4')}}">Week 4</a>
+              </li>
+              <li>
+                <a href="{{ url_for('week5')}}">Week 5</a>
+              </li>
+              <li>
+                <a href="{{ url_for('week6')}}">Week 6</a>
+              </li>
+              <li>
+                <a href="{{ url_for('week7')}}">Week 7</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+  </nav>
+
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    {% block body %}
+    {% endblock %}
+  </div>
+  <div class="col-md-3"></div>
+  <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+</body>
+</html>

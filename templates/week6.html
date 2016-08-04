@@ -1,0 +1,240 @@
+{% extends "layout.html" %} {% block title %} Week 6 - Flask v2 {% endblock
+%} {% block body %}
+<h1>What is a Template?</h1>
+<p>
+  The observant viewer may wonder why we call our pages templates. "A template
+  for what?" is a reasonable question. The answer to that is actually pretty
+  straightforward. You have already seen that we change linking behaviors,
+  we would not be able to use our website without Flask. What you have
+  not seen is that we can use replace certain elements on our templates
+  with things of our choosing. This is a very powerful tool, as it allows
+  us to use versitile templates that fit all of our needs. Take Facebook for
+  example. Everyone&#39;s profile is basically the same, minus the personal
+  information. This means that there is probably a Facebook profile template
+  that just modifies personal information. Look at this template for all
+  a Mudd Gmail account.
+</p>
+<img alt="Basic Gmail account where personal information like name, photos
+      and emails are replaced with general info" src="{{ url_for('static', filename='email.png') }}"
+    style="width: 100%; border: 1px solid black">
+<p>
+  Your Mudd wmail might look like this, minus the number of emails. When you
+  have millions, and in these cases, billions of users, templates can literally save
+  trillions of lines of code.
+</p>
+<h2> How do I use a Template? </h2>
+<p>
+  Great question! Templates can be manipulated in many ways, but the simplest
+  way is to simply pass variables and denote in the template that it is
+  waiting for a variable. Remember when we put curly braces around our
+  links? We were specifying in our template that this information was not
+  HTML, but Jinga. Jinga is a template engine for Python that gives us
+  the ability to run code on our templates. Let&#39; see it in action.
+</p>
+<h3> hello.html </h3>
+<pre><code class="html"><!--
+      -->&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt; Hello! &lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt; Hello &#123;&#123; name &#125;&#125;!&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;<!--
+      --></code></pre>
+<p>
+  We specified on our template that we are expecting a variable, name. We
+  send this from our Python file that contains all of our URL mappings.
+</p>
+<h3>application.py</h3>
+<pre><code><!--
+  -->from flask import Flask, render_template
+
+application = Flask(__name__)
+
+@application.route("/&lt;name&gt;")
+@application.route("/")
+def index(name=None):
+    if name == None:
+        return "Hello!"
+    return render_template("hello.html", name=name)
+
+if __name__ == "__main__":
+    application.run()<!--
+      --></code></pre>
+<p>
+  We now receive a nice welcome from the page if we enter our name into the
+  address bar. There are a few things we had to do here to make this work.
+  First, we have two routes mapping to the same function. This is allows
+  us to do the same work for both of these URLs in the same place. Second,
+  we set name to have an initial value of None. This is for when a user
+  enters only the default URL in the address bar.
+</p>
+<h2>Ooh, Fancy </h2>
+<p>
+  Do you remember when we said that we would be able to automatically populate
+  a Bootstrap carousel? We&#39;ll learn the basics of how to! We don&#39;t have
+  to pass boring numbers and strings into templates, we can also pass in
+  lists.
+</p>
+<h3> shop.html</h3>
+<pre><code class="html"><!--
+      -->&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt; Hello! &lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;ul&gt;
+  &lt;!-- We can receive the loop index using loop.index. It starts at 1 --&gt;
+  &#123;% for item in shopping %&#125;
+  &lt;li&gt;
+    &#123;&#123; item &#125;&#125;
+  &lt;/li&gt;
+  &#123;% endfor %&#125;
+&lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;<!--
+      --></code></pre>
+<p>
+  When we pass a list to this template, it will load every element in that
+  list into an unordered list. This means we no longer have to write a
+  list tag for every one of our elements! We just have to change our routing
+  file accordingly.
+</p>
+<h3>application.py</h3>
+<pre><code><!--
+  -->from flask import Flask, render_template
+
+application = Flask(__name__)
+
+@application.route("/&lt;name&gt;")
+@application.route("/")
+def index(name=None):
+    if name == None:
+        return "Hello!"
+    return render_template("hello.html", name=name)
+
+@application.route("/shop")
+def shop():
+    return render_template("shop.html", shopping=["spam","more spam", "pears"])
+
+if __name__ == "__main__":
+    application.run()<!--
+      --></code></pre>
+<p>
+  We can also iterate over a dictionary using a similar method as list.
+</p>
+<h3> shop.html</h3>
+<pre><code class="html"><!--
+      -->&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt; Hello! &lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;table&gt;
+  &#123;% for key, value in shopping.items() %&#125;
+  &lt;tr&gt;
+    &lt;td&gt; &#123;&#123; key &#125;&#125; &lt;/td&gt;
+    &lt;td&gt; &#123;&#123; value &#125;&#125; &lt;/td&gt;
+  &lt;/tr&gt;
+  &#123;% endfor %&#125;
+&lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;<!--
+      --></code></pre>
+<p>
+  We also must change the variable we pass to the template to a dictionary,
+  or else it would be an error to iterate over the variable.
+</p>
+<h3>application.py</h3>
+<pre><code><!--
+  -->from flask import Flask, render_template
+
+application = Flask(__name__)
+
+@application.route("/&lt;name&gt;")
+@application.route("/")
+def index(name=None):
+    if name == None:
+        return "Hello!"
+    return render_template("hello.html", name=name)
+
+@application.route("/shop")
+def shop():
+    return render_template("shop.html", shopping={"spam":42,"more spam":42,"pears":"some"})
+
+if __name__ == "__main__":
+    application.run()<!--
+      --></code></pre>
+<p>
+  Do not forget that dictionaries do not have any order to them, so iterating
+  the same dictionary can have different results.
+</p>
+<h2> I know a shortcut... </h2>
+<p>
+  You may have realized that all of our pages have similar attributes about
+  them: a navbar, a body and padding at the bottom. The navbar and padding
+  stays the same, and the heading stays relatively the same. It would be
+  ideal if we could use a base template and then just load in what we need.
+  Fortunately, Jinga allows us to do just that.
+</p>
+<h3> base.html </h3>
+<pre><code class="html"><!--
+      -->&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt; &#123;% block title %&#125;&#123;% endblock %&#125;   &lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &#123;% block body %&#125;
+
+  &#123;% endblock %&#125;
+&lt;/body&gt;
+&lt;/html&gt;<!--
+      --></code></pre>
+<p>
+  Now, if we want different pages to use this base template, we simply specify
+  this on the other pages. Let&#39;s create two pages that extend this
+  base template.
+</p>
+<h3>hello.html</h3>
+<pre><code class="html"><!--
+      -->&#123;% extends "base.html" %&#125;
+&#123;% block title %&#125; Hello &#123;% endblock %&#125;
+
+&#123;% block body %&#125;
+&lt;p&gt;
+  Hello, it is nice to meet you!
+&lt;/p&gt;
+&#123;% endblock %&#125;<!--
+      --></code></pre>
+<h3>bye.html</h3>
+<pre><code class="html"><!--
+      -->&#123;% extends "base.html" %&#125;
+&#123;% block title %&#125; Goodbye &#123;% endblock %&#125;
+
+&#123;% block body %&#125;
+&lt;p&gt;
+  Bye, it was nice to meet you!
+&lt;/p&gt;
+&#123;% endblock %&#125;<!--
+      --></code></pre>
+<p>
+  You do not have to use this on your website, just know that you have it
+  in your toolbox and it may come in handy.
+</p>
+<h2> Homework </h2>
+<p>
+  Now it&#39;s time for the fun part! Do you remember when we said that we
+  would be able to autopopulate a carousel using Flask? Well now it is
+  time to do so! Using the methods laid out on this page, make a carousel
+  that will display at least ten of your favorite images.
+</p>
+<div style="padding-bottom: 100px">
+  <a style="float: left" href="{{ url_for('week5') }}">Previous</a>
+  <a style="float: right" href="{{ url_for('week7') }}">Next</a>
+</div>
+{% endblock %}

@@ -1,0 +1,290 @@
+
+{% extends "layout.html" %}
+
+{% block title %} Week 4 - Bootstraps {% endblock %} {% block body %}
+<!-- We can specify containers that take up a certain size of the screen
+     using the from col-md-#. This number must be between 1 and 12, as bootstraps
+     splits the screen into 12 equal partitions. Here, we make a large one in
+     the middle of the screen that spans 6 of these divisions and two padding elements
+     of width 3. -->
+
+<h1> Picking Yourself Up by Your Bootstraps</h1>
+
+<p>
+  Luckily for us, there are CSS libraries that will automatically format
+  our website for us. The one we will learn today is &#39;Bootstraps.&#39;
+  It is very popular, and even the submission site is styled with Bootstraps.
+  How do we use Bootstraps? We specify in the class of the object was type
+  of formating we want. This allows the Bootstraps style sheet to load
+  and simplifies our work by a ton. For a full list of Bootstrap compnents,
+  visit the
+  <a href="http://getbootstrap.com/components/">Components</a> page. Basically,
+  to format our webpage, we change the classes of our webpage to match
+  the ones provided by Bootstraps, and then we edit the CSS to our own
+  liking. Let&#39;s run through a few examples.
+</p>
+<!-- a basic bootstraps table. SOOOOOOOOOOO much easier and prettier -->
+<table class="table table-stripped">
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Difficulty</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>CS5</td>
+      <td>Hard</td>
+    </tr>
+    <tr>
+      <td>CS60</td>
+      <td>Medium</td>
+    </tr>
+    <tr>
+      <td>CS70</td>
+      <td>Easy</td>
+    </tr>
+  </tbody>
+</table>
+<p>
+  See? We have a pretty table and we did not have to any CSS ourselves. But
+  what if we don&#39;t want the default table? Well, we can simply edit
+  the style afterwards and our code will overwrite the previous styles
+  before.
+</p>
+<!-- Change the style to our choosing so that our table is not just a plain
+       Bootstraps one. -->
+<table class="table table-stripped" style="background-color: lightblue; font-size: large">
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Difficulty</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>CS5</td>
+      <td>Hard</td>
+    </tr>
+    <tr>
+      <td>CS60</td>
+      <td>Medium</td>
+    </tr>
+    <tr>
+      <td>CS70</td>
+      <td>Easy</td>
+    </tr>
+  </tbody>
+</table>
+<!-- You remember col-md-#? You can also specify other classes made for smaller
+       screens as well so that the page acts differently for small phones, large
+       phones, tablets, etc. -->
+<p>
+  Bootstraps was also made to be mobile friendly, so components automatically
+  resize depending on the size of the screen. If you adjust the size of
+  the browser, you will see that components also can realign to better
+  fit the screen. We will not be exploring more into mobile compatibility,
+  but you may wish to do more on your own.
+</p>
+<h2> More Bootstraps Components</h2>
+<p>
+  Here are some more Bootstrap components that you may encounter. Also, you
+  should know that Bootstrap can also change elements that are not being
+  specified using the class specifier. You may notice this with links and
+  different text based tabs. Again, to become more familiar with all of
+  Bootstraps components, you should visit the
+  <a href="http://getbootstrap.com/components/">link</a> above to view
+  components. Some of these elements may not be mentioned here but you
+  may want them on your website anyways.
+</p>
+<h2> Jumbotron </h2>
+<p>
+  By far the best named Bootstrap component, a jumbotron is a multimedia
+  display designed to grab the attention of visitors
+</p>
+<div class="jumbotron">
+  <h1 style="text-align: left"> Welcome!</h1>
+  <p>
+    This is my webpage, nice to meet you! Please, feel free to browse around
+    and view.
+  </p>
+</div>
+<h2> Thumbnails </h2>
+<p>
+  A component that displays various media, like pictures and video.
+</p>
+<div class="row">
+  <!-- Will display all of these elements in rows, making a new one when it
+    over flows.-->
+  <div class="col-md-4">
+    <a href="#" class="thumbnail">
+      <img src="{{ url_for('static', filename='smile.png')}}" alt="Example" />
+    </a>
+    <div class="caption">
+      <h3>Heading</h3>
+      <p>
+        Description information about this photo. Not very important.
+      </p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <a href="#" class="thumbnail">
+      <img src="{{ url_for('static', filename='smile.png')}}" alt="Example" />
+    </a>
+    <div class="caption">
+      <h3>Heading</h3>
+      <p>
+        Description information about this photo. Not very important.
+      </p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <a href="#" class="thumbnail">
+      <img src="{{ url_for('static', filename='smile.png')}}" alt="Example" />
+    </a>
+    <div class="caption">
+      <h3>Heading</h3>
+      <p>
+        Description information about this photo. If you read this, you will have
+        a better understanding of the meaning of the picture described
+        above.
+      </p>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <a href="#" class="thumbnail">
+      <img src="{{ url_for('static', filename='smile.png')}}" alt="Example" />
+    </a>
+    <div class="caption">
+      <h3>Heading</h3>
+      <p>
+        Description information about this photo. If you read this, you will have
+        a better understanding of the meaning of the picture described
+        above.
+      </p>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <a href="#" class="thumbnail">
+      <img src="{{ url_for('static', filename='smile.png')}}" alt="Example" />
+    </a>
+    <div class="caption">
+      <h3>Heading</h3>
+      <p>
+        Description information about this photo. If you read this, you will have
+        a better understanding of the meaning of the picture described
+        above.
+      </p>
+    </div>
+  </div>
+</div>
+<h2> Input </h2>
+<p>
+  Sometimes we are gonna want to recieve information from users. This is
+  done using the traditional HTML elements, but Bootstraps gives us some
+  ability to edit these more.
+</p>
+<!-- We place each type of input in a different input group class. Then, the
+    formula to make an input element is to use the input tag to specify the
+    type of input, and put span elements to add components befor and after. -->
+<div class="input-group">
+  <span class="input-group-addon" id="pound">#</span>
+  <input type="text" class="form-control" placeholder="Phone Number" aria-describedby="pound">
+</div>
+<div class="input-group">
+  <span class="input-group-addon">
+        <input type="checkbox" aria-label="check" />
+      </span>
+  <p class="form-control">
+    A checkbox
+  </p>
+</div>
+<div class="input-group">
+  <span class="input-group-addon">
+        <input type="radio" aria-label="rad" />
+      </span>
+  <p class="form-control">
+    A radio button
+  </p>
+</div>
+<div class="input-group input-group-lg">
+  <span class="input-group-addon">
+        <input type="radio" aria-label="checkbox" />
+      </span>
+  <p class="form-control">
+    A large radio button
+  </p>
+</div>
+
+<h2> Carousel </h2>
+<p>
+  If you ever did HTML before HTML5, you may remember the marquee tag. A
+  tag that allowed for text and images to scroll across the screen. This
+  tag is deprecated, so do not use it. It may not have support on some
+  browsers, and it is better to use Javascript and CSS instead. Luckily,
+  Bootstraps has a fancy version built in! Let&#39;s see it in use.
+</p>
+<!-- Carousel Beginning -->
+<div class="carousel slide" data-ride="carousel" id="profSlide">
+  <!-- Indicators: The little dots on the bottom of the carousel denoting
+         where they will take us when we click on them. -->
+  <ol class="carousel-indicators">
+    <!-- Data slid is the slide the button will take us when we click on them.
+           We also specify which slide is active first, it is typically slide 0,
+           but that does not have to be true for every case. -->
+    <li data-target="#profSlide" data-slide-to="0" class="active"></li>
+    <li data-target="#profSlide" data-slide-to="1"></li>
+    <li data-target="#profSlide" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Inner: This is the sustanence behind the carasel. And they align to
+         the slides. -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img class="img-responsive center-block" src=" {{url_for('static', filename='smile.png')}}"
+          alt="Smile!" width="100%" />
+    </div>
+    <div class="item">
+      <img class="img-responsive center-block" src=" {{url_for('static', filename='smile.png')}}"
+          alt="Smile!" width="100%" />
+    </div>
+    <div class="item">
+      <img class="img-responsive center-block" src=" {{url_for('static', filename='smile.png')}}"
+          alt="Smile!" width="100%" />
+    </div>
+  </div>
+  <!-- Controls: These are the left and rightmost bars that allow us to advance the
+         slides as we please. -->
+  <a class="left carousel-control" href="#profSlide" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#profSlide" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<!-- Carousel Ending -->
+<p>
+  That is actually really complicated. Later, we will use Flask to automatically
+  populate this for us.
+</p>
+<p>
+  <strong>DISCLAIMER: </strong>Bootstraps can make lazy web developers. Make sure
+  you know how to use CSS and do not depend on Bootstraps too much. This is
+  also a disclaimer for programming in general, there is usually a solution
+  elsewhere, but sometimes it is best just to do it yourself and learn.
+</p>
+<h2>Homework</h2>
+<p>
+  Apply Bootstraps to your page. Once you are done, you can either use the
+  Bootstrpped version of your page or your webpage or the pure CSS one you
+  designed yourself.
+</p>
+<!-- Just a div on the bottom of the page to give on some space after the
+      last element -->
+<div style="padding-bottom: 100px">
+  <a style="float: left" href="{{ url_for('week3') }}">Previous</a>
+  <a style="float: right" href="{{ url_for('week5') }}">Next</a>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "layout.html" %} {% block title %} Get that Weather {% endblock
+%} {% block body %}
+<h1> Get Weather</h1>
+<form action="/weather" method="POST">
+  <div class="input-group input-group-lg">
+    <span class="input-group-addon" id="city">
+            <span class="glyphicon glyphicon-globe"></span>
+    </span>
+    <input type="text" class="form-control" name="city" placeholder="City Name"
+        aria-describedby="city">
+  </div>
+  <div class="input-group input-group-lg">
+    <span class="input-group-addon" id="days">#</span>
+    <input type="text" class="form-control" name="days" placeholder="Number of Days"
+        aria-describedby="days">
+  </div>
+  <h3>Choice Your Units</h3>
+  <div class="col-lg-6">
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon">
+              <input type="radio" name="units" id="imperial" aria-label="rad"/>
+            </span>
+      <p class="form-control">
+        Imperial (Murica)
+      </p>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon">
+              <input type="radio" name="units" id="metric" aria-label="rad" />
+            </span>
+      <p class="form-control">
+        Metric (Losers)
+      </p>
+    </div>
+  </div>
+  <input class="btn btn-default" type="submit" id="sub" value="Continue"
+  />
+</form>
+{% endblock %}
